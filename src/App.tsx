@@ -1,28 +1,7 @@
 import React, { useState } from 'react'
+import words from './words.json'
 
 export function App() {
-  const [word, setWord] = useState([
-    'abdomen',
-    'aborted',
-    'abought',
-    'achiest',
-    'acolyte',
-    'aconite',
-    'acrogen',
-    'adipose',
-    'adopter',
-    'advisor',
-    'aileron',
-    'ailment',
-    'albumen',
-    'albumin',
-    'aliment',
-    'alimony',
-    'almoner',
-    'alright',
-    'ambient',
-    'ambling',
-  ])
   const alphabet = [
     'A',
     'B',
@@ -51,14 +30,50 @@ export function App() {
     'Y',
     'Z',
   ]
+
+  const [secretWord, setSecretWord] = useState(
+    words[Math.floor(Math.random() * words.length)]
+  )
+  const splitWord = secretWord.split('')
+  const [guessedLetters, setGuessedLetters] = useState('')
+
+  function clickOnLetter(letter: string) {
+    setGuessedLetters([...guessedLetters, letter])
+    console.log(guessedLetters)
+    return secretWord.includes(guessedLetters)
+      ? console.log('this only works when the string is empty')
+      : console.log(
+          'this always gets returned because the letter is added after the function ends'
+        )
+  }
+
   return (
-    <div>
+    <div className="app">
       <main>
         <header>Snowman!</header>
-        <img src="/images/step_7.png" />
-        <nav>_ _ _ _ _ _ _</nav>
+        <img src="/images/step_0.png" />
+        <nav>
+          {splitWord.map(function (letter) {
+            return <p key={letter}>{letter}</p>
+          })}
+        </nav>
       </main>
-      <footer>{alphabet}</footer>
+      <footer>
+        {alphabet.map(function (letter) {
+          return (
+            <button
+              key={letter}
+              onClick={function () {
+                clickOnLetter(letter)
+              }}
+              disabled={guessedLetters.includes(letter)}
+            >
+              {letter}
+            </button>
+          )
+        })}
+      </footer>
+      <div>Your guessed letters are: {guessedLetters}</div>
     </div>
   )
 }

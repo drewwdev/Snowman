@@ -12,10 +12,17 @@ body {
   flex-direction: column;
   justify-content: center;
 }
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 main {
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  max-width: 375px;
 
   & header {
     font-size: 2rem;
@@ -23,18 +30,34 @@ main {
 
   & img {
     width: 50%;
+    max-height: 30rem;
   }
 
   & nav {
+    display: flex;
+    flex-direction: row;
     font-size: 4rem;
+
+    & p {
+      margin: 0;
+    }
   }
 }
 footer {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
   flex-wrap: wrap;
+  justify-content: space-evenly;
 
-  padding-top: 2rem;
-  font-size: 2rem;
+  max-width: 420px;
+
+  & button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 2rem;
+    width: 2rem;
+  }
 }
