@@ -33,16 +33,14 @@ main {
     max-height: 30rem;
   }
 
-  & nav {
-    display: flex;
-    flex-direction: row;
-    font-size: 4rem;
-
-    & p {
-      margin: 0;
-    }
+  & p {
+    margin: 0;
   }
 }
+.currentword {
+  font-size: 3rem;
+}
+
 footer {
   display: flex;
   flex-direction: row;
